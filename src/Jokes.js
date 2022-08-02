@@ -1,9 +1,10 @@
 import React from 'react'
+import JokeCard from './JokeCard'
 
 const Jokes = ({ jokes }) => {
     return (
         <>
-            {jokes.map((joke) => <h2>{joke}</h2>)}
+            {jokes.map((joke) => <JokeCard jokeContent={joke} />)}
         </>
     )
 }

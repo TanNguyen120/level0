@@ -23,8 +23,16 @@ function App({ className }) {
   // ta tạo thêm một state nữa là newJoke để thêm joke mới vào danh sách
   const [newJoke, setNewJoke] = useState("");
 
+  // ta cũng có thể tạo một state để lưu trữ các giá trị của input
   const getJokeInputValue = (e) => {
     setNewJoke(e.target.value);
+  }
+
+  // ta cũng có thể tạo một state để gắn cờ cho việc render form
+  const [showForm, setShowForm] = useState(false);
+
+  const showFormFunction = () => {
+    setShowForm(!showForm);
   }
 
 
@@ -38,10 +46,10 @@ function App({ className }) {
       {/* ta có thể truyền setState và data mặc định vào prob và có thể truyền tất cả hoặc một phần vào các component khác nhau */}
       {/* ở header có button add nên ta truyền hàm có chứa setJoke cho nó */}
       <Row>
-        <Header />
+        <Header showFormFunction={showFormFunction} />
       </Row>
       <Row>
-        <Form saveJokeInput={getJokeInputValue} addJokeFunction={addJokeClick} />
+        <Form saveJokeInput={getJokeInputValue} addJokeFunction={addJokeClick} showForm={showForm} />
       </Row>
       {/* ở Jokes ta truyền data của newJoke vào để display ấy mà*/}
       <Jokes jokes={jokeList} />

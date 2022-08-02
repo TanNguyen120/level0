@@ -2,15 +2,25 @@ import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import AddJokeButton from './AddJokeButton';
-const Form = ({ saveJokeInput, addJokeFunction }) => {
+const Form = ({ saveJokeInput, addJokeFunction, showForm }) => {
+    const show = showForm ? 'block' : 'none';
+    const style = {
+        backgroundColor: 'gray',
+        padding: '1.5rem',
+        borderRadius: '1rem',
+        marginLeft: '1rem',
+        marginRight: '1rem',
+        showForm: show
+    };
     return (
-        <Row>
+        showForm && (<Row style={style}>
+
             <Row>
                 <Col sm={1}>
                     <label htmlFor="jokeInput">New Joke:</label>
                 </Col>
                 <Col>
-                    <input className='jokeInput' type="text" onChange={saveJokeInput} />
+                    <textarea className='jokeInput' type="text" onChange={saveJokeInput} rows={4} cols={40} />
                 </Col>
             </Row>
             <Row>
@@ -19,6 +29,7 @@ const Form = ({ saveJokeInput, addJokeFunction }) => {
                 </Col>
             </Row>
         </Row>
+        )
     )
 }
 

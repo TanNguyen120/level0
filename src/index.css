@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: gray;
 }
 
 code {
@@ -13,5 +14,7 @@ code {
 }
 
 .mainContainer {
-  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background-image: url('/public/cool-background.png');
+  color: aliceblue;
 }
