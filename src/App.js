@@ -6,6 +6,8 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import './index.css';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import About from "./About";
 
 
 
@@ -42,18 +44,34 @@ function App({ className }) {
     setJoke([...jokeList, newJoke]);
   }
   return (
-    <Container className="mainContainer">
-      {/* ta có thể truyền setState và data mặc định vào prob và có thể truyền tất cả hoặc một phần vào các component khác nhau */}
-      {/* ở header có button add nên ta truyền hàm có chứa setJoke cho nó */}
-      <Row>
-        <Header showFormFunction={showFormFunction} />
-      </Row>
-      <Row>
-        <Form saveJokeInput={getJokeInputValue} addJokeFunction={addJokeClick} showForm={showForm} />
-      </Row>
-      {/* ở Jokes ta truyền data của newJoke vào để display ấy mà*/}
-      <Jokes jokes={jokeList} />
-    </Container>
+    // Ta sử dụng router bằng cách bao toàn bộ component bên trong một container tên là browser router
+    // trong container này ta sẽ khai báo các route cho các component
+    // ta sẽ sử dụng switch để chỉ render một component duy nhất
+    // ta sẽ sử dụng exact để chỉ render khi url trùng khớp hoàn toàn
+    // ta sẽ sử dụng path để chỉ định url của component
+    // ta sẽ sử dụng component để chỉ định component nào sẽ được render
+
+    <BrowserRouter>
+
+      <Container className="mainContainer">
+        {/* ta có thể truyền setState và data mặc định vào prob và có thể truyền tất cả hoặc một phần vào các component khác nhau */}
+        {/* ở header có button add nên ta truyền hàm có chứa setJoke cho nó */}
+        <Row>
+          <Header showFormFunction={showFormFunction} />
+        </Row>
+        <Row>
+          <Form saveJokeInput={getJokeInputValue} addJokeFunction={addJokeClick} showForm={showForm} />
+        </Row>
+        {/* ở Jokes ta truyền data của newJoke vào để display ấy mà*/}
+        <Jokes jokes={jokeList} />
+      </Container>
+      <Routes>
+        <Route exact path="/" element={App} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+
+    </BrowserRouter>
+
   );
 }
 

@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/esm/Col';
 import Row from 'react-bootstrap/esm/Row';
 import { MdExpandMore } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 
 
 const Header = ({ showFormFunction }) => {
@@ -16,7 +17,10 @@ const Header = ({ showFormFunction }) => {
             <Col sm={1}>
                 <Button variant="success" onClick={showFormFunction}><MdExpandMore /></Button>
             </Col>
-            <Col sm={{ span: 2, offset: 7 }}>
+            <Col sm={1}>
+                <Link to="/about">about</Link>
+            </Col>
+            <Col sm={{ span: 2, offset: 5 }}>
                 <img src={"/logo.png"} width="100" height="50" />
             </Col>
         </Row>

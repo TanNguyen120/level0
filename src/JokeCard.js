@@ -1,10 +1,11 @@
 import React from 'react';
 import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 const JokeCard = ({ jokeContent }) => {
     return (
-        <Row>
+        <Col sm={4}>
             <Card style={{ width: '18rem', margin: '2rem' }}>
                 <Card.Img variant="top" src="https://picsum.photos/100" />
                 <Card.Body>
@@ -15,7 +16,7 @@ const JokeCard = ({ jokeContent }) => {
                     <Button variant="primary">Go somewhere</Button>
                 </Card.Body>
             </Card>
-        </Row >
+        </Col >
     )
 }
 
